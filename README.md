@@ -19,8 +19,6 @@ A simple and modular backend project built with Python. This project contains ap
 │   ├── deps.py            <- Dependency injections or shared resources
 │   └── main.py            <- Entry point for the application
 │
-├── docs                   <- Documentation for the project
-│
 ├── .github                <- GitHub workflows or templates (CI/CD, issue templates, etc.)
 │
 ├── noteit_                <- Package or module source directory

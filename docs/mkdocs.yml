@@ -1,8 +1,0 @@
-site_name: noteIt_
-# 
-site_author: andis
-# 
-nav:
-  - Getting Started: getting-started.md
-  - Overview: index.md
-theme: readthedocs
