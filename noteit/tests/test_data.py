@@ -12,7 +12,6 @@ def test_create_note():
     assert response.status_code in [200, 201]
     data = response.json()
     
-    # Adjust if the API returns: { "note": { "id": ..., "title": ..., "content": ... } }
     note = data.get("note", data)  # fallback if no 'note' key
     
     assert note["title"] == "Test Note"
