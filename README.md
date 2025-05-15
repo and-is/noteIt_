@@ -5,7 +5,7 @@ A simple and modular backend project built with Python. This project contains ap
 ---
 
 ## 📁 Project Structure
-
+```
 ├── .env                   <- Environment variables file
 ├── .gitignore             <- Specifies files and directories to ignore in Git
 ├── README.md              <- Top-level README for the project
@@ -33,7 +33,7 @@ A simple and modular backend project built with Python. This project contains ap
 │
 ├── __pycache__            <- Root-level cache directory (ignore in version control)
 ├── .pytest_cache          <- Pytest's internal cache directory (can be ignored)
-
+```
 
 ---
 
