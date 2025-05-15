@@ -1,6 +1,7 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 
 from pydantic import BaseModel
+import sqlite3
 
 import sys
 from pathlib import Path
@@ -13,10 +14,12 @@ from sqlalchemy import text
 from app.deps import get_db
 
 class NoteCreate(BaseModel):
+    id: int | None = None
     title: str
     content: str | None = None
 
 app = FastAPI(title=APP_NAME, debug=DEBUG)
+
 
 @app.get("/")
 def read_root():
@@ -39,8 +42,10 @@ def read_note(note_id: int, db: Session = Depends(get_db)):
 
 @app.post("/notes")
 def create_note(note: NoteCreate, db: Session = Depends(get_db)):
-    db.execute(text("INSERT INTO notes (title, content) VALUES (:title, :content)"), {"title": note.title, "content": note.content})
+    result = db.execute(text("INSERT INTO notes (title, content) VALUES (:title, :content)"), {"title": note.title, "content": note.content})
     db.commit()
+    id = result.lastrowid
+    note.id = id
     return {"message": "Note created successfully", "note": note}
 
 @app.delete("/notes/{note_id}", status_code=204)
